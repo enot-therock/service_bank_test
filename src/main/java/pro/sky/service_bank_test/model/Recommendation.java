@@ -1,10 +1,10 @@
 package pro.sky.service_bank_test.model;
 
-import java.util.UUID;
+import org.springframework.stereotype.Component;
 
+@Component
 public class Recommendation {
 
-//    private UUID id;
     private String id, name, text;
 
     public Recommendation(String id, String name, String text) {

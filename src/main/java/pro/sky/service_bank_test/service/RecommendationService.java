@@ -1,26 +1,27 @@
 package pro.sky.service_bank_test.service;
 
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 import pro.sky.service_bank_test.model.Recommendation;
-import pro.sky.service_bank_test.repository.RecommendationsRepository;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
 public class RecommendationService {
 
-    private final JdbcTemplate jdbcTemplate;
-    private final RecommendationsRepository recommendationsRepository;
+    private final List<RecommendationRuleSet> ruleSets;
 
-    public RecommendationService(JdbcTemplate jdbcTemplate, RecommendationsRepository recommendationsRepository) {
-        this.jdbcTemplate = jdbcTemplate;
-        this.recommendationsRepository = recommendationsRepository;
+    public RecommendationService(List<RecommendationRuleSet> ruleSets) {
+        this.ruleSets = ruleSets;
     }
 
     public List<Recommendation> findRecommendationFromUser(UUID user) {
-        return null;
+        return ruleSets.stream()
+                .map(r -> r.checkRule(user))
+                .filter(Optional::isPresent)
+                .map(Optional::get)
+                .collect(Collectors.toList());
     }
 }
