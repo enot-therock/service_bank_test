@@ -3,6 +3,7 @@ package pro.sky.service_bank_test.model;
 import jakarta.persistence.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @Entity
 @Table(name = "recommendation")
@@ -13,7 +14,7 @@ public class RecommendationByRule {
     private Long id;
 
     @Column(name = "product_id")
-    private String product_id;
+    private UUID product_id;
 
     @Column(name = "product_name")
     private String product_name;
@@ -24,7 +25,7 @@ public class RecommendationByRule {
     @OneToMany(mappedBy = "recommendationByRule", cascade = CascadeType.ALL)
     private List<Rule> rule;
 
-    public RecommendationByRule(String product_id, String product_name, String product_text, List<Rule> rule) {
+    public RecommendationByRule(UUID product_id, String product_name, String product_text, List<Rule> rule) {
         this.product_id = product_id;
         this.product_name = product_name;
         this.product_text = product_text;
@@ -43,11 +44,11 @@ public class RecommendationByRule {
         this.id = id;
     }
 
-    public String getProduct_id() {
+    public UUID getProduct_id() {
         return product_id;
     }
 
-    public void setProduct_id(String product_id) {
+    public void setProduct_id(UUID product_id) {
         this.product_id = product_id;
     }
 

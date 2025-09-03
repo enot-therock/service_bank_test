@@ -2,12 +2,15 @@ package pro.sky.service_bank_test.model;
 
 import org.springframework.stereotype.Component;
 
+import java.util.UUID;
+
 @Component
 public class Recommendation {
 
-    private String id, name, text;
+    private UUID id;
+    private String name, text;
 
-    public Recommendation(String id, String name, String text) {
+    public Recommendation(UUID id, String name, String text) {
         this.id = id;
         this.name = name;
         this.text = text;
@@ -15,11 +18,11 @@ public class Recommendation {
 
     public Recommendation() {}
 
-    public String getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 

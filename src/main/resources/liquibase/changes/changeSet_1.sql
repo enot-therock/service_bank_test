@@ -11,7 +11,7 @@ CREATE TABLE rule(
 
 CREATE TABLE recommendation(
     id SERIAL PRIMARY KEY,
-    product_id SERIAL,
+    product_id UUID,
     product_name TEXT NOT NULL,
     product_text TEXT NOT NULL
     );
