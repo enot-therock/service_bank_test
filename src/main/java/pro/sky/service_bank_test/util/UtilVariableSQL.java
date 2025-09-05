@@ -88,5 +88,5 @@ public class UtilVariableSQL {
                     "GROUP BY t3.USER_ID " +
                     "HAVING SUM(CASE WHEN t3.TYPE = 'WITHDRAW' THEN t3.AMOUNT ELSE 0 END) > 100000)";
 
-    public final static String NAME_SQL = "SELECT FIRST_NAME, LAST_NAME, USER_ID FROM USERS WHERE USERNAME =?";
+    public final static String NAME_SQL = "SELECT FIRST_NAME, LAST_NAME, ID FROM USERS WHERE USERNAME =?";
 }

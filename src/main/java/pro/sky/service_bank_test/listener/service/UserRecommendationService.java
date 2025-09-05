@@ -2,7 +2,7 @@ package pro.sky.service_bank_test.listener.service;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
-import pro.sky.service_bank_test.listener.model.RecommendationByUser;
+import pro.sky.service_bank_test.model.RecommendationByUserTelegram;
 import pro.sky.service_bank_test.model.Recommendation;
 import pro.sky.service_bank_test.service.RecommendationService;
 
@@ -22,11 +22,11 @@ public class UserRecommendationService {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    public RecommendationByUser byUser(String userName) {
-        return jdbcTemplate.queryForObject(NAME_SQL, RecommendationByUser.class);
+    public RecommendationByUserTelegram byUser(String userName) {
+        return jdbcTemplate.queryForObject(NAME_SQL, RecommendationByUserTelegram.class);
     }
 
-    public List<Recommendation> recommendations(RecommendationByUser user) {
+    public List<Recommendation> recommendations(RecommendationByUserTelegram user) {
         return recommendationService.findRecommendationFromUser(user.getUser());
     }
 }

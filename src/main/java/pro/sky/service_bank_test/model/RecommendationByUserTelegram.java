@@ -1,4 +1,4 @@
-package pro.sky.service_bank_test.listener.model;
+package pro.sky.service_bank_test.model;
 
 import jakarta.persistence.*;
 
@@ -6,13 +6,13 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "userRecommendations")
-public class RecommendationByUser {
+public class RecommendationByUserTelegram {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "used_id")
+    @Column(name = "user_id")
     private UUID user;
 
     @Column(name = "first_name")
@@ -21,13 +21,13 @@ public class RecommendationByUser {
     @Column(name = "last_name")
     private String lastName;
 
-    public RecommendationByUser(UUID user, String firsName, String lastName) {
+    public RecommendationByUserTelegram(UUID user, String firsName, String lastName) {
         this.user = user;
         this.firsName = firsName;
         this.lastName = lastName;
     }
 
-    public RecommendationByUser() {
+    public RecommendationByUserTelegram() {
     }
 
     public Long getId() {

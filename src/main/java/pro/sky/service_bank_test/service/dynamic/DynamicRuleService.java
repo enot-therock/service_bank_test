@@ -1,7 +1,6 @@
 package pro.sky.service_bank_test.service.dynamic;
 
 import org.springframework.stereotype.Service;
-import pro.sky.service_bank_test.model.RecommendationByRule;
 import pro.sky.service_bank_test.model.Rule;
 import pro.sky.service_bank_test.repository.DynamicRuleRepository;
 
