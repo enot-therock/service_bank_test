@@ -35,7 +35,7 @@ public class ManagementController {
         return ResponseEntity.ok(cacheService.getUsersFromSaving());
     }
 
-    @GetMapping("/invest")
+    @GetMapping("/credit")
     public ResponseEntity<List<UUID>> getCredit() {
         return ResponseEntity.ok(cacheService.getUsersFromCredit());
     }

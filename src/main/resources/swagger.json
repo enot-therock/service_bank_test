@@ -1,0 +1,369 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "OpenAPI definition",
+    "version": "v0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8080",
+      "description": "Generated server url"
+    }
+  ],
+  "paths": {
+    "/management/clear-caches": {
+      "post": {
+        "tags": [
+          "management-controller"
+        ],
+        "operationId": "clearAllCaches",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/dynamicRule": {
+      "get": {
+        "tags": [
+          "dynamic-rules-controller"
+        ],
+        "operationId": "getAllRules",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Rule"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "dynamic-rules-controller"
+        ],
+        "operationId": "createRule",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Rule"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Rule"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "dynamic-rules-controller"
+        ],
+        "operationId": "removeRule",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/recommendation/recommendation/{id}": {
+      "get": {
+        "tags": [
+          "recommendation-controller"
+        ],
+        "operationId": "getRecommendations",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Recommendation"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/management/saving": {
+      "get": {
+        "tags": [
+          "management-controller"
+        ],
+        "operationId": "getSaving",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "format": "uuid"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/management/invest": {
+      "get": {
+        "tags": [
+          "management-controller"
+        ],
+        "operationId": "getInvest",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "format": "uuid"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/management/info": {
+      "get": {
+        "tags": [
+          "management-controller"
+        ],
+        "operationId": "getInfo",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Info"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/management/credit": {
+      "get": {
+        "tags": [
+          "management-controller"
+        ],
+        "operationId": "getCredit",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "format": "uuid"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/dynamicRule/statistic": {
+      "get": {
+        "tags": [
+          "dynamic-rules-controller"
+        ],
+        "operationId": "getRulesStatistics",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/StatisticRuleResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/dynamicRule/{id}": {
+      "delete": {
+        "tags": [
+          "dynamic-rules-controller"
+        ],
+        "operationId": "deleteRule",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/Rule"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "RecommendationByRule": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "readOnly": true
+          },
+          "product_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "product_name": {
+            "type": "string"
+          },
+          "product_text": {
+            "type": "string"
+          },
+          "rule": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Rule"
+            }
+          }
+        }
+      },
+      "Rule": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "readOnly": true
+          },
+          "query": {
+            "type": "string"
+          },
+          "arguments": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "negate": {
+            "type": "boolean"
+          },
+          "recommendationByRule": {
+            "$ref": "#/components/schemas/RecommendationByRule"
+          }
+        }
+      },
+      "Recommendation": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string"
+          },
+          "text": {
+            "type": "string"
+          }
+        }
+      },
+      "Info": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "version": {
+            "type": "string"
+          }
+        }
+      },
+      "StatisticRuleResponse": {
+        "type": "object",
+        "properties": {
+          "ruleId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "triggerCount": {
+            "type": "integer",
+            "format": "int32"
+          }
+        }
+      }
+    }
+  }
+}
