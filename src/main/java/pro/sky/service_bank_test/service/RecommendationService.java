@@ -6,7 +6,6 @@ import pro.sky.service_bank_test.model.Recommendation;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 @Service
 public class RecommendationService {
@@ -17,11 +16,10 @@ public class RecommendationService {
         this.ruleSets = ruleSets;
     }
 
-    public List<Recommendation> findRecommendationFromUser(UUID user) {
+    public Optional<Recommendation> findRecommendationFromUser(UUID user) {
         return ruleSets.stream()
-                .map(r -> r.checkRule(user))
-                .filter(Optional::isPresent)
-                .map(Optional::get)
-                .collect(Collectors.toList());
+                .map(rule -> rule.checkRule(user))
+                .flatMap(Optional::stream)
+                .findFirst();
     }
 }

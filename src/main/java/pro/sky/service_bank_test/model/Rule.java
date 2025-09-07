@@ -1,6 +1,9 @@
 package pro.sky.service_bank_test.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 @Table(name = "rule")
@@ -8,13 +11,14 @@ public class Rule {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private Long id;
 
     @Column(name = "query")
     private String query;
 
     @Column(name = "arguments")
-    private String arguments;
+    private List<String> arguments;
 
     @Column(name = "negate")
     private Boolean negate;
@@ -23,7 +27,7 @@ public class Rule {
     @JoinColumn(name = "recommendationByRule_id")
     private RecommendationByRule recommendationByRule;
 
-    public Rule(String query, String arguments, Boolean negate, RecommendationByRule recommendationByRule) {
+    public Rule(String query, List<String> arguments, Boolean negate, RecommendationByRule recommendationByRule) {
         this.query = query;
         this.arguments = arguments;
         this.negate = negate;
@@ -46,11 +50,11 @@ public class Rule {
         this.query = query;
     }
 
-    public String getArguments() {
+    public List<String> getArguments() {
         return arguments;
     }
 
-    public void setArguments(String arguments) {
+    public void setArguments(List<String> arguments) {
         this.arguments = arguments;
     }
 

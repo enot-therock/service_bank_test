@@ -12,7 +12,7 @@ public class StartCommand implements Command {
         return new SendMessage(update.message().chat().id(),
                 "Привет!!! " + update.message().chat().username() +
                         " этот бот поможет вам подобрать нужный продукт банка. Введите команду" +
-                        " /recommend_username (ваш username)");
+                        " /username");
     }
 
     @Override

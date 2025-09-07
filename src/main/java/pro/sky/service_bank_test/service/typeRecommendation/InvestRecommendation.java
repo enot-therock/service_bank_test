@@ -8,7 +8,8 @@ import pro.sky.service_bank_test.service.RecommendationRuleSet;
 
 import java.util.Optional;
 import java.util.UUID;
-import java.util.stream.Stream;
+
+import static pro.sky.service_bank_test.util.UtilVariableUUID.INVEST_ID;
 
 @Component
 public class InvestRecommendation implements RecommendationRuleSet {
@@ -24,10 +25,10 @@ public class InvestRecommendation implements RecommendationRuleSet {
 
     @Override
     public Optional<Recommendation> checkRule(UUID uuid) {
-        if (recommendationsRepository.findUsersFromInvest().equals(uuid)) {
-            Stream<Recommendation> invest = listRecommendationsService.getRecommendations().stream().
-                    filter(recommendation -> recommendation.getName().equals("invest"));
-            return Optional.of((Recommendation) invest);
+        if (recommendationsRepository.findUsersFromInvest().contains(uuid)) {
+            return listRecommendationsService.getRecommendations().stream()
+                    .filter(recommendation -> INVEST_ID.equals(recommendation.getId()))
+                    .findFirst();
         }
         return Optional.empty();
     }

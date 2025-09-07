@@ -2,7 +2,7 @@ package pro.sky.service_bank_test.service.dynamic;
 
 import org.springframework.stereotype.Service;
 import pro.sky.service_bank_test.model.Rule;
-import pro.sky.service_bank_test.repository.DynamicRuleRepository;
+import pro.sky.service_bank_test.repository.dynamic.DynamicRuleRepository;
 
 import java.util.List;
 

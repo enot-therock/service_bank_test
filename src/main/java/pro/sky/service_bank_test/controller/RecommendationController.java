@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 import pro.sky.service_bank_test.model.Recommendation;
 import pro.sky.service_bank_test.service.RecommendationService;
 
-import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @RestController
@@ -20,9 +20,9 @@ public class RecommendationController {
         this.recommendationService = recommendationService;
     }
 
-    @GetMapping("/recommendation/{user_id}")
-    public List<Recommendation> getRecommendations(@PathVariable UUID user_id) {
-        return recommendationService.findRecommendationFromUser(user_id);
+    @GetMapping("/recommendation/{id}")
+    public Optional<Recommendation> getRecommendations(@PathVariable UUID id) {
+        return recommendationService.findRecommendationFromUser(id);
     }
 
 }

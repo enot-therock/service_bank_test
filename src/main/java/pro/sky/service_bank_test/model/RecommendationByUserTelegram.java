@@ -13,7 +13,7 @@ public class RecommendationByUserTelegram {
     private Long id;
 
     @Column(name = "user_id")
-    private UUID user;
+    private UUID userId;
 
     @Column(name = "first_name")
     private String firsName;
@@ -21,14 +21,13 @@ public class RecommendationByUserTelegram {
     @Column(name = "last_name")
     private String lastName;
 
-    public RecommendationByUserTelegram(UUID user, String firsName, String lastName) {
-        this.user = user;
+    public RecommendationByUserTelegram(UUID userID, String firsName, String lastName) {
+        this.userId = userID;
         this.firsName = firsName;
         this.lastName = lastName;
     }
 
-    public RecommendationByUserTelegram() {
-    }
+    public RecommendationByUserTelegram() {}
 
     public Long getId() {
         return id;
@@ -38,12 +37,12 @@ public class RecommendationByUserTelegram {
         this.id = id;
     }
 
-    public UUID getUser() {
-        return user;
+    public UUID getUserId() {
+        return userId;
     }
 
-    public void setUser(UUID user) {
-        this.user = user;
+    public void setUserId(UUID user) {
+        this.userId = userId;
     }
 
     public String getFirsName() {

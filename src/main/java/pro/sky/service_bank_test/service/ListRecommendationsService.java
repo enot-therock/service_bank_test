@@ -22,7 +22,7 @@ public class ListRecommendationsService {
         List<Recommendation> recommendationCollection = new ArrayList<>();
 
         Recommendation invest = new Recommendation(INVEST_ID,
-                "Invest 500",INVEST);
+                "Invest 500", INVEST);
 
         Recommendation saving = new Recommendation(SAVING_ID,
                   "Top Saving", SAVING);

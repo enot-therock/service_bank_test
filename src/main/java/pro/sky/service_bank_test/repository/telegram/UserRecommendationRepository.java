@@ -1,4 +1,4 @@
-package pro.sky.service_bank_test.repository;
+package pro.sky.service_bank_test.repository.telegram;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
