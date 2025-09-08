@@ -7,13 +7,6 @@ public class UtilVariableSQL {
             "FROM TRANSACTIONS t " +
             "INNER JOIN PRODUCTS p ON t.PRODUCT_ID = p.ID " +
             "WHERE p.TYPE = 'DEBIT' " +
-
-//                    "t.USER_ID IN (" +
-//                    "SELECT t1.USER_ID " +
-//                    "FROM TRANSACTIONS t1 " +
-//                    "INNER JOIN PRODUCTS p1 ON t1.PRODUCT_ID = p1.ID " +
-//                    "WHERE p1.TYPE = 'DEBIT') " +
-
             "AND t.USER_ID NOT IN (" +
                     "SELECT DISTINCT t2.USER_ID " +
                     "FROM TRANSACTIONS t2 " +
@@ -33,12 +26,6 @@ public class UtilVariableSQL {
             "FROM TRANSACTIONS t " +
             "INNER JOIN PRODUCTS p ON t.PRODUCT_ID = p.ID " +
             "WHERE p.TYPE = 'DEBIT' " +
-//                    "AND t.USER_ID IN (" +
-//                        "SELECT t1.USER_ID " +
-//                        "FROM TRANSACTIONS t1 " +
-//                        "INNER JOIN PRODUCTS p1 ON t1.PRODUCT_ID = p1.ID " +
-//                        "WHERE p1.TYPE = 'DEBIT') " +
-
             "AND t.USER_ID IN (" +
                     "SELECT USER_ID FROM (" +
                         "SELECT t2.USER_ID " +
